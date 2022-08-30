@@ -1,5 +1,7 @@
 html,
 body {
+    background: linear-gradient(120deg, #a6a7d0, #41426c);
+    background-size: 400% 400%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -8,3 +10,5 @@ body {
     font-family: sans-serif;
     background-color: #fff;
 }
+
+/*LOGIN*/
