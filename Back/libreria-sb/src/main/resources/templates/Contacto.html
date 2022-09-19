@@ -12,7 +12,7 @@
 
 <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="principal.html">Leeme! hoy y siempre!</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/principal">Leeme! hoy y siempre!</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
             aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="login.html">SALIR</a>
+                <a class="nav-link px-3" href="/">SALIR</a>
             </div>
         </div>
     </header>
@@ -61,6 +61,45 @@
         </div>
     </div>
 
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-bg-light">
+        <h1 class="text-center mb-3 fw-bolder fst-italic">COMUNICATE CON NOSOTROS</h1>
+        <div class="container-fluid col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
+            <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
+                <!-- Name -->
+                <div class="text-left">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <!-- email -->
+                <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <!-- Subject -->
+                <div>
+                    <label for="msg_subject" class="form-label">Asunto</label>
+                    <input type="email" class="form-control" id="msg_subject" placeholder="Asunto" required>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <!-- Message -->
+                <div>
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control text-dark" id="message" placeholder="Mensaje" rows="3"
+                        required></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <!-- Form Submit -->
+                <div class="form-submit mt-2">
+                    <button class="btn btn-primary w-100" type="submit" id="form-submit">
+                        <i class="material-icons mdi mdi-message-outline"></i> Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
