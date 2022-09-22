@@ -19,16 +19,16 @@ public class SecurityServiceImpl implements SecurityService {
     private final UserRepository userRepository;
 
     @Override
-    public UserResponse validateUser(String nombreusuario, String contraseña) {
-        var userOp = userRepository.findByUsernameAndPasswordAndActiveIsTrue(nombreusuario, contraseña);
+    public UserResponse validateUser(String username, String password) {
+        var userOp = userRepository.findByUsernameAndPasswordAndActiveIsTrue(username, password);
         if (userOp.isEmpty()) {
             throw new RuntimeException("Credenciales inválidas");
         }
 
         var user = userOp.get();
         return UserResponse.builder()
-                .nombreusuario(user.getNombreusuario())
-                .nombre(user.getNombre())
+                .username(user.getUsername())
+                .name(user.getName())
                 .email(user.getEmail())
                 .admin(user.getAdmin())
                 .build();
@@ -38,8 +38,8 @@ public class SecurityServiceImpl implements SecurityService {
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll().stream()
                 .map(u -> UserResponse.builder()
-                        .nombreusuario(u.getNombreusuario())
-                        .nombre(u.getNombre())
+                        .username(u.getUsername())
+                        .name(u.getName())
                         .email(u.getEmail())
                         .admin(u.getAdmin())
                         .build())
@@ -47,16 +47,16 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public UserResponse getUserByUsername(String nombreusuario) {
-        var userOp = userRepository.findById(nombreusuario);
+    public UserResponse getUserByUsername(String username) {
+        var userOp = userRepository.findById(username);
         if (userOp.isEmpty()) {
             throw new RuntimeException("El usuario no existe");
         }
 
         var user = userOp.get();
         return UserResponse.builder()
-                .nombreusuario(user.getNombreusuario())
-                .nombre(user.getNombre())
+                .username(user.getUsername())
+                .name(user.getName())
                 .email(user.getEmail())
                 .admin(user.getAdmin())
                 .build();
@@ -64,15 +64,20 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void createUser(UserRequest user) {
-        var userOp = userRepository.findById(user.getNombreusuario());
+        var userOp = userRepository.findById(user.getUsername());
         if (userOp.isPresent()) {
-            throw new RuntimeException("Ya existe un usuario registrado con ese email");
+            throw new RuntimeException("No puede utilizar ese nombre de usuario");
+        }
+
+        userOp = userRepository.findByEmail(user.getEmail());
+        if (userOp.isPresent()) {
+            throw new RuntimeException("Ya existe un usuario registrado con ese correo electrónico");
         }
 
         var userDb = new User();
-        userDb.setNombreusuario(user.getNombreusuario());
-        userDb.setContraseña(user.getContraseña());
-        userDb.setNombre(user.getNombre());
+        userDb.setUsername(user.getUsername());
+        userDb.setPassword(user.getPassword());
+        userDb.setName(user.getName());
         userDb.setEmail(user.getEmail());
         userDb.setActive(true);
         userDb.setAdmin(user.getAdmin());
@@ -81,19 +86,34 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void updateUser(UserRequest user) {
-        // TODO Auto-generated method stub
+        var userOp = userRepository.findById(user.getUsername());
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
+
+        var userDb = userOp.get();
+        userDb.setUsername(user.getUsername());
+        userDb.setName(user.getName());
+        userDb.setEmail(user.getEmail());
+        userDb.setAdmin(user.getAdmin());
+        userDb = userRepository.save(userDb);
 
     }
 
     @Override
-    public void deleteUser(String nombreusuario) {
-        // TODO Auto-generated method stub
+    public void deleteUser(String username) {
+        var userOp = userRepository.findById(username);
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
+
+        userRepository.delete(userOp.get());
 
     }
 
     @Override
-    public void activateUser(String nombreusuario) {
-        var userOp = userRepository.findById(nombreusuario);
+    public void activateUser(String username) {
+        var userOp = userRepository.findById(username);
         if (userOp.isEmpty()) {
             throw new RuntimeException("El usuario no existe");
         }
@@ -105,8 +125,8 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public void inactivateUser(String nombreusuario) {
-        var userOp = userRepository.findById(nombreusuario);
+    public void inactivateUser(String username) {
+        var userOp = userRepository.findById(username);
         if (userOp.isEmpty()) {
             throw new RuntimeException("El usuario no existe");
         }

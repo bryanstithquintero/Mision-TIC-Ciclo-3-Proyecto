@@ -10,6 +10,11 @@ import lombok.AllArgsConstructor;
 @Controller
 
 public class LibreriaController {
+    @GetMapping(value = { "/", "/index", "/index.html" })
+    public String goToIndex(Model model) {
+        return "index";
+    }
+
     @GetMapping("/Contacto")
     public String goToContact(Model model) {
         return "Contacto";

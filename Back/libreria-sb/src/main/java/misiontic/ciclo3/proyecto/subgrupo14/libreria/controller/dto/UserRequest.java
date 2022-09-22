@@ -6,11 +6,11 @@ import lombok.Data;
 @Builder
 @Data
 public class UserRequest {
-    private String nombreusuario;
+    private String username;
 
-    private String contraseña;
+    private String password;
 
-    private String nombre;
+    private String name;
 
     private String email;
 

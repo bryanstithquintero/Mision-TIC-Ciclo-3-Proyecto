@@ -8,7 +8,7 @@ import misiontic.ciclo3.proyecto.subgrupo14.libreria.model.entity.User;
 
 public interface UserRepository extends JpaRepository<User, String> {
 
-    Optional<User> findByUsernameAndPasswordAndActiveIsTrue(String nombreusuario, String contraseña);
+    Optional<User> findByUsernameAndPasswordAndActiveIsTrue(String username, String password);
 
     Optional<User> findByEmail(String email);
 }

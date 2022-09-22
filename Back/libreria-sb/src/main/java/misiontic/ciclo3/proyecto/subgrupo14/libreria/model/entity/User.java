@@ -5,19 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "user")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
-    @Column(name = "usuario_id")
-    private String nombreusuario;
+    @Column(name = "user_id")
+    private String username;
 
-    private String contraseña;
+    private String password;
 
-    private String nombre;
+    private String name;
 
     @Column(unique = true)
     private String email;

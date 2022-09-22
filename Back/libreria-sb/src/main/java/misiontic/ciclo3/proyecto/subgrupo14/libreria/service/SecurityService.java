@@ -7,19 +7,19 @@ import misiontic.ciclo3.proyecto.subgrupo14.libreria.controller.dto.UserResponse
 
 public interface SecurityService {
 
-    UserResponse validateUser(String nombreusuario, String contraseña);
+    UserResponse validateUser(String username, String password);
 
     List<UserResponse> getAllUsers();
 
-    UserResponse getUserByUsername(String nombreusuario);
+    UserResponse getUserByUsername(String username);
 
     void createUser(UserRequest user);
 
     void updateUser(UserRequest user);
 
-    void deleteUser(String nombreusuario);
+    void deleteUser(String username);
 
-    void activateUser(String nombreusuario);
+    void activateUser(String username);
 
-    void inactivateUser(String nombreusuario);
+    void inactivateUser(String username);
 }
