@@ -17,26 +17,24 @@ public class LibreriaParaTodosSpringBootApplication {
 		SpringApplication.run(LibreriaParaTodosSpringBootApplication.class, args);
 	}
 
-	/*
-	 * @Component
-	 * 
-	 * @Data
-	 * 
-	 * @AllArgsConstructor
-	 * public static class Dataloader implements CommandLineRunner {
-	 * 
-	 * private final UserRepository userRepository;
-	 * 
-	 * @Override
-	 * public void run(String... args) throws Exception {
-	 * loadUsers();
-	 * }
-	 * 
-	 * private void loadUsers() {
-	 * userRepository.save(new User("admin", "admin123", "Administrator",
-	 * "admin@libreria.com", true, true));
-	 * }
-	 * }
-	 */
+	@Component
+
+	@Data
+
+	@AllArgsConstructor
+	public static class Dataloader implements CommandLineRunner {
+
+		private final UserRepository userRepository;
+
+		@Override
+		public void run(String... args) throws Exception {
+			loadUsers();
+		}
+
+		private void loadUsers() {
+			userRepository.save(new User("admin", "admin123", "Administrator",
+					"admin@libreria.com", true, true));
+		}
+	}
 
 }
