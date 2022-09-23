@@ -37,7 +37,7 @@ const postToLogin = async (bodyObject) => {
 
         alert("Bienvenido " + user.username + "!", "success");
 
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 1000));
 
         window.location.href = "/principal";
     } else {

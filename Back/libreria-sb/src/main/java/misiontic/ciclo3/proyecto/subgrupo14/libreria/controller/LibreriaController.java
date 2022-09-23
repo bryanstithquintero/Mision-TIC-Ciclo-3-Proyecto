@@ -5,29 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
 @Controller
-
+@Slf4j
 public class LibreriaController {
+
     @GetMapping(value = { "/", "/index", "/index.html" })
     public String goToIndex(Model model) {
         return "index";
     }
 
-    @GetMapping("/Contacto")
-    public String goToContact(Model model) {
-        return "Contacto";
-    }
-
     @GetMapping("/DatosUsuario")
     public String goToDatosUsuario(Model model) {
         return "DatosUsuario";
-    }
-
-    @GetMapping("/Libro")
-    public String goToLibro(Model model) {
-        return "Libro";
     }
 
     @GetMapping("/listaLibros")

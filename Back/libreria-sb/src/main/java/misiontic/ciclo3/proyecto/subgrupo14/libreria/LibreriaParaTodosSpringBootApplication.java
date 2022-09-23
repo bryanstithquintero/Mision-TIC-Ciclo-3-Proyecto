@@ -28,7 +28,7 @@ public class LibreriaParaTodosSpringBootApplication {
 
 		@Override
 		public void run(String... args) throws Exception {
-			loadUsers();
+			// loadUsers();
 		}
 
 		private void loadUsers() {
