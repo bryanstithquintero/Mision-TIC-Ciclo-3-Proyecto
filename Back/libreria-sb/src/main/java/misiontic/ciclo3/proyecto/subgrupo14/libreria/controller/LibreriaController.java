@@ -32,7 +32,7 @@ public class LibreriaController {
         var categories = this.listaService.getCategories();
 
         model.addAttribute("title", "Bienvenido");
-        model.addAttribute("Categories", categories);
+        model.addAttribute("categories", categories);
         return "catalogo";
     }
 

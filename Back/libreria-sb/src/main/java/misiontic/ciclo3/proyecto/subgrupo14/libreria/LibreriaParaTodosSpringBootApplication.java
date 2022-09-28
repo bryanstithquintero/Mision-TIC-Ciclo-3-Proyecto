@@ -60,7 +60,7 @@ public class LibreriaParaTodosSpringBootApplication {
 			var category = categoryRepository.findByName("Fantasia").get();
 			libroRepository.saveAll(Arrays.asList(
 					new Libro("001", "harry potter y la piedra", "magos", "planeta",
-							"https://static.wikia.nocookie.net/esharrypotter/images/9/9a/Harry_Potter_y_la_Piedra_Filosofal_Portada_Espa%C3%B1ol.PNG/revision/latest?cb=20151020165725",
+							"https://static.wikia.nocookie.net/esharrypotter/images/9/9a/Harry_Potter_y_la_Piedra_Filosofal_Portada_Espa%C3%B1ol.PNG",
 							category)));
 		}
 	}
