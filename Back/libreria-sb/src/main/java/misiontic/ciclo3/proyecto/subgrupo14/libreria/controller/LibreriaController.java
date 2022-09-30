@@ -1,6 +1,6 @@
 package misiontic.ciclo3.proyecto.subgrupo14.libreria.controller;
 
-import javax.annotation.Generated;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import lombok.AllArgsConstructor;
 import lombok.var;
@@ -90,6 +88,34 @@ public class LibreriaController {
 
         log.info(libro.toString());
         listaService.saveLibro(libro);
+        return "redirect:/RegistroLibros";
+    }
+
+    @GetMapping("/RegistroLibros/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable("id") String id, Model model) {
+        var libro = this.listaService.getLibrobyId(id);
+        model.addAttribute("id", libro);
+        return "editarLibro";
+    }
+
+    @PostMapping("/RegistroLibros/{id}")
+    public String actualizarEstudiante(@PathVariable("id") String id,
+            @ModelAttribute("libro") Optional<LibroDto> libro, Model model) {
+        libro = listaService.getLibrobyId(id);
+        var libroOp = libro.get();
+        libroOp.setId(id);
+        libroOp.setName(libroOp.getName());
+        libroOp.setDescription(libroOp.getDescription());
+        libroOp.setEditorial(libroOp.getEditorial());
+        libroOp.setImageUrl(libroOp.getImageUrl());
+
+        listaService.updateLibro(libroOp);
+        return "redirect:/RegistroLibros";
+    }
+
+    @GetMapping("/RegistroLibros/{id}")
+    public String eliminarLibro(@PathVariable String id) {
+        listaService.deleteLibro(id);
         return "redirect:/RegistroLibros";
     }
 

@@ -85,7 +85,7 @@ public class ListaServiceImpl implements ListaService {
     }
 
     @Override
-    public void updateLibro(LibroDto libro) {
+    public LibroDto updateLibro(LibroDto libro) {
         var libroOp = libroRepository.findById(libro.getId());
         if (libroOp.isEmpty()) {
             throw new RuntimeException("El usuario no existe");
@@ -98,6 +98,8 @@ public class ListaServiceImpl implements ListaService {
         libroDb.setImageUrl(libro.getImageUrl());
         libroDb = libroRepository.save(libroDb);
 
+        return libro;
+
     }
 
     @Override
@@ -108,6 +110,16 @@ public class ListaServiceImpl implements ListaService {
         }
         libroRepository.delete(libroOp.get());
 
+    }
+
+    @Override
+    public Optional<LibroDto> getLibrobyId(String id) {
+        var libros = libroRepository.findById(id);
+        if (libros.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(new LibroDto(libros.get().getCode(), libros.get().getName(), null,
+                libros.get().getDescription(), libros.get().getEditorial(), libros.get().getImageUrl()));
     }
 
 }

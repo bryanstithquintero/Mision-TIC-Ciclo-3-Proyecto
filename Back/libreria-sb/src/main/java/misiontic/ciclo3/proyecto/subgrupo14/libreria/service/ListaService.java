@@ -13,11 +13,13 @@ public interface ListaService {
 
     List<LibroDto> getLibroByCategoryId(Integer CategoryId);
 
+    Optional<LibroDto> getLibrobyId(String id);
+
     List<LibroDto> getAllLibros();
 
     void saveLibro(LibroDto libro);
 
-    void updateLibro(LibroDto libro);
+    LibroDto updateLibro(LibroDto libro);
 
     void deleteLibro(String code);
 }
