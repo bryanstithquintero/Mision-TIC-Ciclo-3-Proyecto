@@ -12,4 +12,12 @@ public interface ListaService {
     Optional<CategoryDto> getCategoryById(Integer id);
 
     List<LibroDto> getLibroByCategoryId(Integer CategoryId);
+
+    List<LibroDto> getAllLibros();
+
+    void saveLibro(LibroDto libro);
+
+    void updateLibro(LibroDto libro);
+
+    void deleteLibro(String code);
 }
