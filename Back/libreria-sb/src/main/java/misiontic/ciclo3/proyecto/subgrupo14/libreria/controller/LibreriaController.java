@@ -32,6 +32,11 @@ public class LibreriaController {
         return "DatosUsuario";
     }
 
+    @GetMapping("/Login")
+    public String goToLogin(Model model) {
+        return "Login";
+    }
+
     @GetMapping("/catalogo")
     public String goToCatalogo(Model model) {
         var categories = this.listaService.getCategories();
@@ -61,12 +66,6 @@ public class LibreriaController {
             model.addAttribute("libros", categoryLibros);
         }
         return "catalogo";
-    }
-
-    @GetMapping("/principal")
-    public String goToprincipal(Model model) {
-
-        return "principal";
     }
 
     @GetMapping("/RegistroLibros")

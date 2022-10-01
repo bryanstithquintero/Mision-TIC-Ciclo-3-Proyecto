@@ -39,7 +39,7 @@ const postToLogin = async (bodyObject) => {
 
         await new Promise(r => setTimeout(r, 1000));
 
-        window.location.href = "/principal";
+        window.location.href = "/";
     } else {
         const message = await response.text();
         showError(message);
