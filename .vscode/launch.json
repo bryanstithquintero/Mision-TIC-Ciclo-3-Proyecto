@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LibreriaParaTodosSpringBootApplication<libreria-sb>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "misiontic.ciclo3.proyecto.subgrupo14.libreria.LibreriaParaTodosSpringBootApplication",
+            "projectName": "libreria-sb",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

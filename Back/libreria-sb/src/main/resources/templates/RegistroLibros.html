@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Libros</title>
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSS/style-principal.css">
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">Leeme! hoy y siempre!</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
+            aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/Login">LOGIN</a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link text-white text-center">
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/catalogo" class="nav-link text-white text-center">
+                                Catalogo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/RegistroLibros" class="nav-link text-white text-center">
+                                Registro de libros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DatosUsuario" class="nav-link text-white text-center">
+                                Datos Usuario
+                            </a>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 te xt-bg-light">
+        <div class="container">
+            <div class="row">
+                <h1>Lista de Libros</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <a th:href="@{/RegistroLibros/nuevo}" class="btn btn-primary btn-sm mb-3">Agregar Nuevo Libro</a>
+                </div>
+            </div>
+            <br>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Editorial</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="libro : ${libro}">
+                        <td th:text="${libro.id}"></td>
+                        <td th:text="${libro.name}"></td>
+                        <td th:text="${libro.description}" style="width: 19% ;"></td>
+                        <td th:text="${libro.editorial}"></td>
+                        <td>
+                            <a th:href="@{/RegistroLibros/editar/{id}(id=${libro.id})}" class="btn btn-info">Editar</a>
+                            <a th:href="@{/RegistroLibros/{id}(id=${libro.id})}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <title>Login biblioteca</title>
+</head>
+
+<body class="text-center">
+    <main class="form-signin w-100 m-auto">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">INICIO DE SESION</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="username">
+                <label for="floatingInput">Nombre de usuario</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="password">
+                <label for="floatingPassword">Contraseña</label>
+            </div>
+
+            <a class="link-dark h6" href="/registro">No tienes cuenta? REGISTRATE</a>
+
+            <button class="w-100 btn btn-lg btn-primary" type="button" onclick="login()">
+                Entrar</button>
+            <div id="errorBox"></div>
+            <p class="mt-5 mb-3 text-muted">&copy; Grupo 15 ciclo 3</p>
+        </form>
+    </main>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+
+</html>

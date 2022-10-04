@@ -1,0 +1,24 @@
+@startuml "libreria ciclo 3"
+
+class Usuario {
+    - String nombreusuario
+    - String contraseña
+    - String nombre
+    - String email
+    - Boolean active
+    - Boolean admin
+    + set()
+    + get()
+}
+
+class Libro {
+    - Long codigo
+    - String nombre
+    - String autor
+    - String editorial
+    - Integer precio
+    + set()
+    + get()
+}
+
+@enduml

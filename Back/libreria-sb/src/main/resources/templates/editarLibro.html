@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar libro</title>
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSS/style-principal.css">
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">Leeme! hoy y siempre!</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
+            aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/Login">LOGIN</a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link text-white text-center">
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/catalogo" class="nav-link text-white text-center">
+                                Catalogo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/RegistroLibros" class="nav-link text-white text-center">
+                                Registro de libros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DatosUsuario" class="nav-link text-white text-center">
+                                Datos Usuario
+                            </a>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 te xt-bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                    <h1 class="text-center">Editar Libro</h1>
+                    <div class="card-body">
+                        <form th:action="@{/RegistroLibros/{id}(id=${libro.code})" th:object="${libro}" method="post">
+                            <div class="form-group">
+                                <label>Codigo</label>
+                                <input type="text" name="codigo" th:field="*{id}" class="form-control"
+                                    placeholder="Digite el codigo" required>
+                                <br>
+                                <label>Nombre</label>
+                                <input type="text" name="name" th:field="*{name}" class="form-control"
+                                    placeholder="Digite el nombre del libro" required>
+                                <br>
+                                <label>Descripcion</label>
+                                <input type="text" name="description" th:field="*{description}" class="form-control"
+                                    placeholder="Digite una Descripcion del libro" required>
+                                <br>
+                                <label>Editorial</label>
+                                <input type="text" name="editorial" th:field="*{editorial}" class="form-control"
+                                    placeholder="Digite una Descripcion del libro" required>
+                                <br>
+                                <label>ImageUrl</label>
+                                <input type="text" name="imageUrl" th:field="*{imageUrl}" class="form-control"
+                                    placeholder="Agregue el link de una imagen" required>
+                                <br>
+                                <div class="box-footer">
+                                    <button class="btn btn-success">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
